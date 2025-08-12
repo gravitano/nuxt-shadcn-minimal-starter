@@ -16,13 +16,18 @@ export default defineNuxtConfig({
     "@nuxt/scripts",
     "@nuxt/test-utils",
     "shadcn-nuxt",
-    "@nuxtjs/seo"
+    "@nuxtjs/seo",
+    'nuxt-site-config',
   ],
 
   css: ["~/assets/css/tailwind.css"],
 
   vite: {
     plugins: [tailwindcss()],
+    // local only
+    server: {
+      allowedHosts: ['gits.test', 'eudeka.test']
+    }
   },
 
   shadcn: {
@@ -40,7 +45,7 @@ export default defineNuxtConfig({
   site: {
     multiTenancy: [
       {
-        hosts: ['gits.test'],
+        hosts: ['gits.test', 'www.gits.test', 'gits.test:3000'],
         config: {
           name: 'GITS',
           url: 'gits.test', // canonical
@@ -51,7 +56,7 @@ export default defineNuxtConfig({
         },
       },
       {
-        hosts: ['eudeka.test'],
+        hosts: ['eudeka.test', 'www.eudeka.test', 'eudeka.test:3000'],
         config: {
           name: 'Eudeka',
           url: 'eudeka.test', // canonical
@@ -61,6 +66,13 @@ export default defineNuxtConfig({
           secondary: 'lightgray'
         },
       },
+    ]
+  },
+
+  nitro: {
+    plugins: [
+      // runtime site config
+      // '~~/server/plugins/site-config'
     ]
   }
 });
