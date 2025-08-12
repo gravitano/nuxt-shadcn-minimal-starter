@@ -35,5 +35,32 @@ export default defineNuxtConfig({
      * @default "./components/ui"
      */
     componentDir: './app/components/ui'
+  },
+
+  site: {
+    multiTenancy: [
+      {
+        hosts: ['gits.test'],
+        config: {
+          name: 'GITS',
+          url: 'gits.test', // canonical
+          description: 'GITS description',
+          // branding
+          primary: 'blue',
+          secondary: 'gray'
+        },
+      },
+      {
+        hosts: ['eudeka.test'],
+        config: {
+          name: 'Eudeka',
+          url: 'eudeka.test', // canonical
+          description: 'Eudeka description',
+          // branding
+          primary: 'green',
+          secondary: 'lightgray'
+        },
+      },
+    ]
   }
 });
