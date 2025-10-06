@@ -8,6 +8,11 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
+  runtimeConfig: {
+    databaseUrl: process.env.DATABASE_URL ?? '',
+    currentUserId: process.env.CURRENT_USER_ID ?? ''
+  },
+
   modules: [
     "@nuxt/eslint",
     "@nuxt/fonts",
